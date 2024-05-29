@@ -1,0 +1,5 @@
+# enviroment variables
+.env
+
+# database schema
+schema.sql
