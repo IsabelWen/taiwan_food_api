@@ -12,7 +12,7 @@ const pool = mysql.createPool({
 }).promise();
 
 // Returns food list 
-export async function getFoods() {
+export async function getFoodlist() {
     const [rows] = await pool.query("SELECT * FROM food");
     return rows;
 };

@@ -1,16 +1,16 @@
 import express from 'express';
-import { getFoods, getFood } from './database.js';
+import { getFoodlist, getFood } from './database.js';
 
 const app = express();
 
 // READ food list 
-app.get("/food", async (req, res) => {
-    const foodlist = await getFoods();
+app.get("/foodlist", async (req, res) => {
+    const foodlist = await getFoodlist();
     res.send(foodlist);
 });
 
 // READ food by id
-app.get("/food/:id", async (req, res) => {
+app.get("/foodlist/:id", async (req, res) => {
     const id = req.params.id;
     const food = await getFood(id);
     res.send(food);
