@@ -1,7 +1,11 @@
 import express from 'express';
+import cors from 'cors';
 import { getFoodlist, getFood } from './database.js';
 
 const app = express();
+app.use(cors({
+    origin: ['http://localhost:3306', 'http://localhost:1234', 'https://isabelwen.github.io']
+}));
 
 // READ food list 
 app.get("/foodlist", async (req, res) => {
@@ -24,5 +28,5 @@ app.use((err, req, res, next) => {
 
 // Listen for request
 app.listen(3306, () => {
-    console.log('Server is running on port 8080');
+    console.log('Server is running on port 3306');
 });
