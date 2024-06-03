@@ -9,15 +9,23 @@ app.use(cors({
 
 // READ food list 
 app.get("/foodlist", async (req, res) => {
-    const foodlist = await getFoodlist();
-    res.send(foodlist);
+    getFoodlist()
+        .then(foodlist => res.send(foodlist))
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 // READ food by id
 app.get("/foodlist/:id", async (req, res) => {
     const id = req.params.id;
-    const food = await getFood(id);
-    res.send(food);
+    getFood(id)
+        .then(food => res.send(food))
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 // Error Handling
@@ -27,6 +35,6 @@ app.use((err, req, res, next) => {
 });
 
 // Listen for request
-app.listen(3306, () => {
+app.listen(8080, () => { // Wider ändern zu 3306!
     console.log('Server is running on port 3306');
 });
